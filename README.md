@@ -1,4 +1,4 @@
-#Course "Python Developer" 2018, https://otus.ru
+# Course "Python Developer" 2018, https://otus.ru
 
 Repo for homework.
 
