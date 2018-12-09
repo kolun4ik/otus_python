@@ -409,6 +409,14 @@ PyCode_Optimize(PyObject *code, PyObject* consts, PyObject *names,
                 cumlc = lastlc + 1;
                 break;
 
+	    case LOAD_FAST:
+		j = GETARG(codestr, i);
+		if (codestr[i+3] == LOAD_CONST && j == 0) {
+		    codestr[i+3] = LOAD_OTUS;
+		    memset(codestr+i, NOP, 3);
+		}
+		break;
+
                 /* Skip over LOAD_CONST trueconst
                    POP_JUMP_IF_FALSE xx. This improves
                    "while 1" performance. */
