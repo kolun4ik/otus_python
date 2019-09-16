@@ -37,11 +37,30 @@ GENDERS = {
 
 
 class CharField(object):
-    pass
+
+    required = False
+    nullable = False
+
+    def __init__(self, required, nullable):
+        self.required = required
+        self.nullable = nullable
+
+    def __str__(self):
+        return 'Charfield'
 
 
 class ArgumentsField(object):
-    pass
+    
+    required = False
+    nullable = False
+
+    def __init__(self, required, nullable):
+        self.required = required
+        self.nullable = nullable
+
+    def __str__(self):
+        return 'ArgumentsF'
+
 
 
 class EmailField(CharField):
@@ -49,23 +68,65 @@ class EmailField(CharField):
 
 
 class PhoneField(object):
-    pass
+
+    required = False
+    nullable = False
+
+    def __init__(self, required, nullable):
+        self.required = required
+        self.required = nullable
+
+    def __str__(self):
+        return 'phone'
 
 
 class DateField(object):
-    pass
+
+    required = False
+    nullable = False
+
+    def __init__(self, required, nullable):
+        self.required = required
+        self.nullable = nullable
+
+    def __str__(self):
+        return 'datafield'
 
 
 class BirthDayField(object):
-    pass
+    required = False
+    nullable = False
+
+    def __init__(self, required, nullable):
+        self.required = required
+        self.required = nullable
+
+    def __str__(self):
+        return 'BirhDayF'
 
 
 class GenderField(object):
-    pass
+
+    required = False
+    nullable = False
+
+    def __init__(self, required, nullable):
+        self.required = required
+        self.required = nullable
+
+    def __str__(self):
+        return 'GenderField'
 
 
 class ClientIDsField(object):
-    pass
+
+    required = False
+
+    def __init__(self, required):
+        self.required = required
+
+    def __str__(self):
+        return 'papa'
 
 
 class ClientsInterestsRequest(object):
