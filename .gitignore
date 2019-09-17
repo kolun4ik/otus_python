@@ -105,7 +105,11 @@ venv.bak/
 # mkdocs documentation
 /site
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+
+db.sqlite3
+geckodriver.log
+__pycache__
+*.pyc
+secret.py
+.idea/
+
