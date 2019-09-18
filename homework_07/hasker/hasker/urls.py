@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import ListView
-from queryanswer.models import Query
+from queryanswer.views import QueryesListView
+
 
 urlpatterns = [
-    path('', ListView.as_view(model=Query, template_name='queryanswer/index.html'), name='index'),
+    path('', QueryesListView.as_view(), name='index'),
     path('admin/', admin.site.urls),
 ]
