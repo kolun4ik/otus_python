@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>Hasker site ready to use!</h1>
+    <input type="search" alt="Search">
+    <a href="{% url 'user:login' %}">Log In</a> | <a href="{% url 'user:register' %}">Sing Up</a>
+    <hr>
     {% block content %}
     {% endblock content %}
 </body>

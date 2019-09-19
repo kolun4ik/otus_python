@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'queryanswer',
+    'user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,6 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'questions:index'
+LOGOUT_REDIRECT_URL = 'questions:index'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

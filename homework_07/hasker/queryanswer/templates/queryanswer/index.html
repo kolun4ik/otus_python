@@ -3,8 +3,8 @@
 {% block content %}
 <h2>Home page for hasker sites!</h2>
 <ul>
-{% for query in queryes %}
-<li>Votes: 2  Answers: 10 {{ query.title}} <a href="#">{{ query.author }}</a> asked: {{ query.created }}</li>
+{% for question in questions %}
+<li>Votes: 2  Answers: 10 {{ question.title}} <a href="#">{{ question.author }}</a> asked: {{ question.created }}</li>
 {% endfor %}
 </ul>
 {% endblock content %}

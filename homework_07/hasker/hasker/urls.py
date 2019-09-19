@@ -13,12 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+import user.urls
+import queryanswer.urls
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from queryanswer.views import QueryesListView
 
 
 urlpatterns = [
-    path('', QueryesListView.as_view(), name='index'),
     path('admin/', admin.site.urls),
+    path('user/', include(user.urls, namespace='user')),
+    path('', include(queryanswer.urls, namespace='qustions')),
 ]
