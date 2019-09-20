@@ -12,6 +12,9 @@ class Question(models.Model):
     created = models.DateTimeField('Создано: ', auto_now_add=True)
     tags = models.CharField('Теги', max_length=50)
 
+    class Meta:
+        db_table = 'question'
+
     def __str__(self):
         return self.title
 
@@ -30,3 +33,4 @@ class Answer(models.Model):
 
     class Meta:
         ordering = ('-created',)
+        db_table = 'answer'
