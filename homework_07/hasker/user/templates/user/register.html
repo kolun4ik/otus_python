@@ -2,7 +2,17 @@
 
 {% block content %}
     <h3>Register new user</h3>
+    <div style="padding-bottom: 100px;">
     <form action="">
-        <input type="button">
+        <label>Login: </label><input type="text"><br>
+        <label>Email: </label><input type="email"><br>
+        <label>Password: </label><input type="password"><br>
+        <label>Repeat Password: </label><input type="password"><br>
+        <label>Avatar: </label><input type="file"><br>
+        <button>Enter</button>
+
     </form>
+        <hr>
+     {{ form }}
+    </div>
 {% endblock content %}

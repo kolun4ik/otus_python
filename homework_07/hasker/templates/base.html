@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,11 +6,19 @@
     <title>Hasker sites</title>
 </head>
 <body>
-    <h1>Hasker site ready to use!</h1>
-    <input type="search" alt="Search">
-    <a href="{% url 'user:login' %}">Log In</a> | <a href="{% url 'user:register' %}">Sing Up</a>
-    <hr>
-    {% block content %}
-    {% endblock content %}
+    <div style="text-align: center">
+        <h1>Hasker site ready to use!</h1>
+        <input type="search" alt="Search">
+        {% if user.is_authenticated %}
+        <img src="{{ user.avatar.url }}">
+        <a href="#">{{ user.username }}</a>
+        <a href="{% url 'user:logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'user:login' %}">Log In</a> | <a href="{% url 'user:register' %}">Sing Up</a>
+        {% endif %}
+        <hr>
+        {% block content %}
+        {% endblock content %}
+    </div>
 </body>
 </html>

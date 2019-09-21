@@ -3,9 +3,9 @@
 {% block content %}
 <h2>Login page for hasker sites!</h2>
 <p>Login form</p>
-<form action="">
-    <input type="text"><br>
-    <input type="text"><br>
-    <button type="button">Submit</button>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enter</button>
 </form>
 {% endblock content %}
