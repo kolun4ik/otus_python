@@ -112,4 +112,5 @@ __pycache__
 *.pyc
 secret.py
 .idea/
+iamges/
 

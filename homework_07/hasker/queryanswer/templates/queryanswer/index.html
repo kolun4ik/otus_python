@@ -2,12 +2,11 @@
 
 {% block content %}
 <h2>New questions | Hot question</h2>
-{% if user.is_authenticated %}
-<a href="{% url 'ask' %}">Ask!</a>
-{% endif %}
+<a href="/ask">Ask!</a>
 <ul>
 {% for question in questions %}
-<li>Votes: 2  Answers: 10 {{ question.title}} <a href="#">{{ question.author }}</a> asked: {{ question.created }}</li>
+<li>Votes: 2  Answers: 10 {{ question.title}} <a href="#">{{ question.author }}</a>
+    {{ question.user }}  asked {{ question.created | date}}</li>
 {% endfor %}
 </ul>
 {% endblock content %}

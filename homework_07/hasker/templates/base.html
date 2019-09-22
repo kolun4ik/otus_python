@@ -8,6 +8,7 @@
 <body>
     <div style="text-align: center">
         <h1>Hasker site ready to use!</h1>
+        <a href="{% url 'questions:index' %}">Главная</a><br>
         <input type="search" alt="Search">
         {% if user.is_authenticated %}
         <img src="{{ user.avatar.url }}">

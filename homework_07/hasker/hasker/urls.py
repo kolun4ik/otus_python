@@ -19,7 +19,6 @@ import queryanswer.urls
 
 from django.contrib import admin
 from django.urls import path, include
-from queryanswer.views import QueryesListView
 
 
 urlpatterns = [

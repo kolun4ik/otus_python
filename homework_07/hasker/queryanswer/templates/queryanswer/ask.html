@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Ask!</h2>
+    <h2>Ask a question!</h2>
+    {% if preview %}
+        prev
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name="action" value="SAVE">Ask!</button>
+    </form>
 {% endblock content %}
