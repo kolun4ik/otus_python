@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>New questions | Hot question</h2>
-<a href="/ask">Ask!</a>
-<ul>
-{% for question in questions %}
-<li>Votes: 2  Answers: 10 {{ question.title}} <a href="#">{{ question.author }}</a>
-    {{ question.user }}  asked {{ question.created | date}}</li>
-{% endfor %}
-</ul>
+<div class="tabs">
+    <br id="hot"/>
+    <a href="#new">New questions</a><a href="#hot">Hot question</a>
+    <div>
+        <a href="{% url 'questions:ask' %}">Ask!</a>
+        <ul>
+            {% for question in questions %}
+            <li>
+                Votes: 2 (<a href="#">+</a> | <a href="#">-</a>) Answers: 10 {{ question.title}}
+                <a href="{% url 'user:settings' %}">{{ question.user }}</a> asked {{ question.created | date}}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <p>Список горячих запросов</p>
+    </div>
+</div>
 {% endblock content %}

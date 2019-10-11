@@ -28,14 +28,15 @@ SECRET_KEY = 'svj2e81cfi99ij#ub)v38#05b9ly=(91(!^m*6@6^rrxq&5n1c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ALLOWED_HOSTS = []
-
 
 AUTH_USER_MODEL = 'user.User'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'user',
     'queryanswer',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user',
+
 ]
 
 MIDDLEWARE = [

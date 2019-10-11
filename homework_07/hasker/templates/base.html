@@ -4,15 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Hasker sites</title>
+    <style>
+        #new, #hot {position: fixed;}
+        .tabs > a,
+        .tabs #hot:target ~ a:nth-of-type(1),
+        .tabs > div { padding: 5px;}
+
+        .tabs > a { line-height: 28px; background: #fff; text-decoration: none; }
+
+        #hot, .tabs > div, .tabs #hot:target ~ div:nth-of-type(1) {display: none; }
+
+        .tabs > div:nth-of-type(1),
+        .tabs #hot:target ~ div:nth-of-type(2) { display: block; }
+
+
+        
+    </style>
 </head>
 <body>
     <div style="text-align: center">
-        <h1>Hasker site ready to use!</h1>
+        <h2>Hasker site ready to use!</h2>
         <a href="{% url 'questions:index' %}">Главная</a><br>
         <input type="search" alt="Search">
         {% if user.is_authenticated %}
-        <img src="{{ user.avatar.url }}">
         <a href="#">{{ user.username }}</a>
+        <img src="{{ user.avatar.url }}">
         <a href="{% url 'user:logout' %}">Logout</a>
         {% else %}
         <a href="{% url 'user:login' %}">Log In</a> | <a href="{% url 'user:register' %}">Sing Up</a>

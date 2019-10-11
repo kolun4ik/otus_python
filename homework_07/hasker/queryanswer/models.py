@@ -33,3 +33,27 @@ class Answer(models.Model):
     class Meta:
         ordering = ('-created',)
         db_table = 'answer'
+
+
+class Vote(models.Model):
+    UP = 1
+    DOWN = -1
+    CHOICES  = (
+        (UP, ">"),
+        (DOWN, "<")
+    )
+    value = models.SmallIntegerField(choices=CHOICES)
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    voted_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('user', 'question')
+
+
+class VoteManager(models.Manager):
+    def get_vote_or_unsaved_blank_vote(self, user, question):
+        try:
+            return Vote.objects.get(question=question, user=user)
+        except Vote.DoesNotExict:
+            return Vote(question=question, user=user)
