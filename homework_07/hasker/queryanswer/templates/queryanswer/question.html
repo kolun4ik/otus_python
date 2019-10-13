@@ -6,6 +6,7 @@
 <a href="">{{ question.tags }}</a>
 <hr>
 {% for item in question.answer_set.all %}
+<a href="#"> - </a> 23 <a href="#"> + </a><br>
     {{ item.answer }}<br />
     <a href="">{{ item.user }}</a>
 <hr>

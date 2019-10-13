@@ -9,7 +9,7 @@
         <ul>
             {% for question in questions %}
             <li>
-                Votes: 2 | Answers: 10 <a href="{% url 'queryanswer:question' question.slug %}">{{ question.title}}</a>
+                Votes: 2 | Answers: {{ question.answer_set.count }} <a href="{% url 'queryanswer:question' question.slug %}">{{ question.title}}</a>
                 <a href="{% url 'user:settings' %}">{{ question.user }}</a> asked {{ question.created | date}}
             </li>
             {% endfor %}
