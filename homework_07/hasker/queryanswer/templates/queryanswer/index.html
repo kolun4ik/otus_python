@@ -5,11 +5,11 @@
     <br id="hot"/>
     <a href="#new">New questions</a><a href="#hot">Hot question</a>
     <div>
-        <a href="{% url 'questions:ask' %}">Ask!</a>
+        <a href="{% url 'queryanswer:ask' %}">Ask!</a>
         <ul>
             {% for question in questions %}
             <li>
-                Votes: 2 (<a href="#">+</a> | <a href="#">-</a>) Answers: 10 {{ question.title}}
+                Votes: 2 | Answers: 10 <a href="{% url 'queryanswer:question' question.slug %}">{{ question.title}}</a>
                 <a href="{% url 'user:settings' %}">{{ question.user }}</a> asked {{ question.created | date}}
             </li>
             {% endfor %}

@@ -2,11 +2,11 @@ from queryanswer.views import QuestionsListView, AskQuestionView, QuestionDetail
 from django.urls import path
 
 
-app_name = 'questions'
+app_name = 'queryanswer'
 
 
 urlpatterns = [
     path('', QuestionsListView.as_view(), name='index'),
     path('ask/', AskQuestionView.as_view(), name='ask'),
-    path('question/<int:pk>', QuestionDetailView.as_view(), name='question')
+    path('question/<slug:slug>', QuestionDetailView.as_view(), name='question')
 ]

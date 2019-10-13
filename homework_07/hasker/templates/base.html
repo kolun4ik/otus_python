@@ -24,7 +24,7 @@
 <body>
     <div style="text-align: center">
         <h2>Hasker site ready to use!</h2>
-        <a href="{% url 'questions:index' %}">Главная</a><br>
+        <a href="{% url 'queryanswer:index' %}">Главная</a><br>
         <input type="search" alt="Search">
         {% if user.is_authenticated %}
         <a href="#">{{ user.username }}</a>

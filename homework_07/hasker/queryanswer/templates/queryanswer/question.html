@@ -2,4 +2,18 @@
 
 {% block content %}
 <h2>{{ question.title }}</h2>
+<p>{{ question.body }}</p>
+<a href="">{{ question.tags }}</a>
+<hr>
+{% for item in question.answer_set.all %}
+    {{ item.answer }}<br />
+    <a href="">{{ item.user }}</a>
+<hr>
+{% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit">
+</form>
 {% endblock content %}

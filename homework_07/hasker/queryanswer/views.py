@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import HttpResponseBadRequest
 from django.views.generic import ListView, CreateView, DetailView
-from queryanswer.models import Question
-from queryanswer.forms import QuestionForm
+from .models import Question
+from .forms import QuestionForm, AnswerForm
+from django.views.generic import FormView
+from django.views.generic.edit import FormMixin
 
 
 class QuestionsListView(ListView):
@@ -27,6 +29,8 @@ class AskQuestionView(LoginRequiredMixin, CreateView):
        return super().form_valid(form)
 
 
-class QuestionDetailView(DetailView):
+class QuestionDetailView(DetailView, FormMixin):
     model = Question
     template_name = 'queryanswer/question.html'
+    form_class = AnswerForm
+
