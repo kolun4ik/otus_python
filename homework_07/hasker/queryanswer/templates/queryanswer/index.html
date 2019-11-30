@@ -1,22 +1,82 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<div class="tabs">
-    <br id="hot"/>
-    <a href="#new">New questions</a><a href="#hot">Hot question</a>
-    <div>
-        <a href="{% url 'queryanswer:ask' %}">Ask!</a>
-        <ul>
+<div class="w3-container">
+    <div class="w3-row">
+        <div class="w3-container w3-center">
+            <div class="w3-bar">
+                <a class="w3-button" onclick="openTab('new')"><h3>New questions</h3></a>
+                <a class="w3-button" onclick="openTab('hot')"><h3>Hot questions</h3></a>
+            </div>
+        </div>
+        <div id="new" class="w3-container w3-display-container tab">
             {% for question in questions %}
-            <li>
-                Votes: 2 | Answers: {{ question.answer_set.count }} <a href="{% url 'queryanswer:question' question.slug %}">{{ question.title}}</a>
-                <a href="{% url 'user:settings' %}">{{ question.user }}</a> asked {{ question.created | date}}
-            </li>
+            <!--Row-->
+            <div class="w3-cell-row w3-border-top">
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:20%">
+                        <div class="w3-half w3-container w3-center">
+                            <p class="w3-xlarge">45</p>
+                            <p>Votes</p>
+                        </div>
+                        <div class="w3-half w3-container w3-center">
+                            <p class="w3-xlarge">{{ question.answer_set.count }}</p>
+                            <p>Answers</p>
+                        </div>
+                    </div>
+                    <div class="w3-col w3-container" style="width:60%">
+                        <a href="{% url 'queryanswer:question' question.id %}"><h4>{{ question.title}}</h4></a>
+                        <p>{{ question.body | truncatechars:200}}</p>
+                        <div class="w3-margin-bottom">
+                            <a href="#"><span class="w3-tag w3-blue w3-padding-small">Tag1</span></a>
+                            <a href="#"><span class="w3-tag w3-blue w3-padding-small">Tag2</span></a>
+                            <a href="#"><span class="w3-tag w3-blue w3-padding-small">Tag3</span></a>
+                        </div>
+                    </div>
+                    <div class="w3-col w3-container" style="width:20%">
+                        <br/><br/>
+                        <a href="{% url 'user:settings' %}" class="w3-text-blue">{{ question.user }}</a>
+                        <p class="w3-small">{{  question.timeago}}</p>
+                    </div>
+                </div>
+            </div>
+            <!--End Row-->
+            {% empty %}
+             <div class="w3-cell-row w3-border-top">
+                <div class="w3-row">
+                    <p>Вопросы отсутствуют!</p>
+                </div>
+             </div>
             {% endfor %}
-        </ul>
+        </div>
+        <div id="hot" class="w3-container w3-display-container tab" style="display:none">
+            <div class="w3-cell-row w3-border-top">
+                <h3>h1</h3>
+            </div>
+            <div class="w3-cell-row w3-border-top">
+                <h3>h2</h3>
+            </div>
+        </div>
     </div>
-    <div>
-        <p>Список горячих запросов</p>
+    {% if is_paginated %}
+    <div class="w3-row w3-center w3-border-top w3-padding-24">
+        <div class="w3-bar">
+            <a href="{% url 'queryanswer:index' %}?page=1" class="w3-button w3-round">&laquo;</a>
+            {% if page_obj.has_previous %}
+            <a href="{% url 'queryanswer:index' %}?page={{ page_obj.previous_page_number }}" class="w3-button w3-round">
+                {{page_obj.previous_page_number}}
+            </a>
+            {% endif %}
+            <a href="{% url 'queryanswer:index' %}?page={{ page_obj.number }}" class="w3-button w3-round">
+                {{page_obj.number}}
+            </a>
+            {% if page_obj.has_next %}
+            <a href="{% url 'queryanswer:index' %}?page={{ page_obj.next_page_number }}" class="w3-button w3-round">
+                {{page_obj.next_page_number}}
+            </a>
+            {% endif %}
+            <a href="{% url 'queryanswer:index' %}?page={{ page_obj.last }}" class="w3-button w3-round">&raquo;</a>
+        </div>
     </div>
+    {% endif %}
 </div>
 {% endblock content %}

@@ -26,6 +26,24 @@ class AnswerForm(forms.ModelForm):
         fields = ['answer', ]
 
 class VoteForm(forms.ModelForm):
+
+    user = forms.ModelChoiceField(
+        widget=forms.HiddenInput,
+        queryset=get_user_model().objects.all(),
+        disabled=True
+    )
+    question = forms.ModelChoiceField(
+        widget=forms.HiddenInput,
+        queryset=Question.objects.all(),
+        disabled=True
+    )
+
+    value = forms.ChoiceField(
+        label="Vote",
+        widget=forms.RadioSelect,
+        choices=Vote.CHOICES
+    )
+
     class Meta:
         model = Vote
         fields = ['value', 'user', 'question']

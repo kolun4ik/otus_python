@@ -5,6 +5,8 @@ from .models import Question, Answer, Vote
 
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ['title', 'user', 'created']
+    prepopulated_fields = {'slug':('title',)}
+    raw_id_fields = ('user',)
 
 class AnswerAdmin(admin.ModelAdmin):
     pass

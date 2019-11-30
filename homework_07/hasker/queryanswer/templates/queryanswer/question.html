@@ -1,20 +1,56 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>{{ question.title }}</h2>
-<p>{{ question.body }}</p>
-<a href="">{{ question.tags }}</a>
-<hr>
-{% for item in question.answer_set.all %}
-<a href="#"> - </a> 23 <a href="#"> + </a><br>
-    {{ item.answer }}<br />
-    <a href="">{{ item.user }}</a>
-<hr>
-{% endfor %}
+<div class="w3-container">
+    <div class="w3-row" >
+        <div class="w3-third w3-container"></div>
+        <div class="w3-rest w3-container w3-padding-32">
+            <h3><a href="#">{{ question.title }}</a></h3>
+            {{ question.body }}
+            <div class="w3-margin-bottom">
+                <span class="w3-tag w3-blue w3-padding-small">Tag1</span>
+                <span class="w3-tag w3-blue w3-padding-small">Tag2</span>
+                <span class="w3-tag w3-blue w3-padding-small">Tag3</span>
+            </div>
+        </div>
+    </div>
+    <!--End Row-->
+    <!--Start Row-->
+    <div class="w3-row" >
+        <div class="w3-third w3-container"></div>
+        <div class="w3-rest w3-container w3-border-bottom">
+            <h3>Answer</h3>
+        </div>
+    </div>
+    {% for item in question.answer_set.all %}
 
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit">
-</form>
+    <!--Start Answer-->
+    <div class="w3-row" >
+        <div class="w3-third w3-container"></div>
+        <div class="w3-rest w3-container w3-margin-bottom w3-border-bottom">
+            {{ item.answer }}
+            <div class="w3-margin-bottom">
+                <span class="w3-tag w3-blue w3-padding-small">Tag1</span>
+                <span class="w3-tag w3-blue w3-padding-small">Tag2</span>
+                <span class="w3-tag w3-blue w3-padding-small">Tag3</span>
+            </div>
+            <p><a href="">{{ item.user }}</a></p>
+        </div>
+    </div>
+    <!--End Answer-->
+
+    {% endfor %}
+    <!--Start add Answer Form-->
+    <div class="w3-row" >
+        <div class="w3-third w3-container"></div>
+        <div class="w3-rest w3-container w3-border-bottom">
+            <h3>Your Answer</h3>
+            <form action="">
+                <textarea name="" id="" cols="80" rows="10"></textarea><br><br>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+    <!--End add Answer Form -->
+</div>
 {% endblock content %}
